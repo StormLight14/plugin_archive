@@ -1,0 +1,11 @@
+name: BullyCommand
+version: '${project.version}'
+main: me.stormlight.bullycommand.BullyCommand
+api-version: 1.18
+authors: [ Stormlight ]
+description: Bully your friends who are inferior to you!
+website: https://github.com/StormLight14
+commands:
+  bully:
+    description: Bully your friends!
+    usage: /<command>
