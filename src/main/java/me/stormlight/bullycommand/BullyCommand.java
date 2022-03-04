@@ -1,34 +1,17 @@
-package me.stormlight.bullycommand.commands;
+package me.stormlight.bullycommand;
+        import me.stormlight.bullycommand.commands.Bully;
+        import org.bukkit.plugin.java.JavaPlugin;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-import java.util.Objects;
-
-public class Bully implements CommandExecutor {
-
+public final class BullyCommand extends JavaPlugin {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public void onEnable() {
+        // Register our command "kit" (set an instance of your command class as executor)
+        this.getCommand("bully").setExecutor(new Bully());
+    }
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            if(args.length > 1) {
-                Player msgPlayer = Bukkit.getPlayer(args[0]);
-                for (int i=0;i<21;i++) {
-                    Objects.requireNonNull(msgPlayer).sendMessage(ChatColor.DARK_RED + "Imagine being " + args[1] + " LOL couldn't be meeee");
-                }
-
-            } else {
-                player.sendMessage(ChatColor.RED + "Correct usage: /bully (player) (word) (number)");
-            }
-
-        }
-
-        return true;
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
     }
 }
